@@ -115,6 +115,8 @@ browserify = require 'browserify-middleware'
         sio_chan = sio_streams.createStreamOnChannel(doc_name)
         ds.pipe(sio_chan).pipe(ds)
 
-  sharedDoc.Timelines.on "add", -> console.log "+T"
+  sharedDoc.Timelines.on "add", (doc) -> 
+    console.log "Timelines add", arguments
+
   sharedDoc.Timelines.on "row_update", -> console.log "~T"
   sharedDoc.Timelines.on "remove", -> console.log "-T"
