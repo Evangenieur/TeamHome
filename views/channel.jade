@@ -1,7 +1,7 @@
 block content
   .container.channel
 
-    .panel.panel-default(ng-repeat="chat_entry in timelines | matchCurrentChannel:current_channel | orderBy:'-date_started'") 
+    .panel.panel-default(ng-repeat="chat_entry in timelines | matchCurrentChannel:current_channel | orderBy:'date_started'") 
       .panel-heading 
         span.pull-left
           img.avatar(ng-src="{{get_user(chat_entry.user, 'avatar')}}")
