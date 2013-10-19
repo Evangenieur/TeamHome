@@ -15,3 +15,7 @@ require("zappajs") PORT, ->
 
   @on disconnect: ->
     o_ "XCnx", @socket.handshake.query.from.green, @socket.handshake.address
+
+  @get "/": -> 
+    @render "index.jade",
+      service_name: SERVICE_NAME
