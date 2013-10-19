@@ -85,3 +85,4 @@ coffee = require "coffee-script"
             when "delete"
               o_ filename, local_file2route filename, dir_props, dir_props[local_file2route filename, dir_props]?
               delete dir_props.files[local_file2route filename, dir_props]
+

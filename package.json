@@ -19,6 +19,7 @@
     "cuid": "~1.2.1",
     "crdt": "~3.5.4",
     "browserify-middleware": "~1.19.0",
-    "jade": "~0.35.0"
+    "jade": "~0.35.0",
+    "socket.io-client": "~0.9.16"
   }
 }

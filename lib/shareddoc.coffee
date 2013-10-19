@@ -30,12 +30,14 @@ browserify = require 'browserify-middleware'
         stores[name] = doc
         @__defineGetter__ "store", ->
           stores[name]
-        console.log "STORES", stores
 
       @add: (data) ->
         console.log "add", data, data.id
         new @ data.id, data
 
+      @list: ->
+        row.state for id, row of stores[@name].rows
+ 
       constructor: ->
         @store_name = @constructor.name
         @data = stores[@store_name].get @id
@@ -72,6 +74,7 @@ browserify = require 'browserify-middleware'
     root.sharedDocs = [
       "Users"
       "Rooms"
+      "Timelines"
     ]
     root.sharedDoc = {}
 
