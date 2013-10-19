@@ -3,4 +3,4 @@ body{padding-top:50px;}
 .intro{background:url(../img/intro.jpg) center center no-repeat;background-size:cover;color:white;text-shadow:0 2px 3px black;padding:50px 20px 80px 20px;}.intro .btn{box-shadow:0 5px 5px rgba(0, 0, 0, 0.5);border:1px solid rgba(255, 255, 255, 0.2);}
 .navbar-brand{color:white !important;}
 footer{color:#AAA;}
-input{text-align:center;}
+input,select{text-align:center;}
