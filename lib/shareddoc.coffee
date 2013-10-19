@@ -74,6 +74,7 @@ browserify = require 'browserify-middleware'
     root.sharedDocs = [
       "Users"
       "Rooms"
+      "Timelines"
     ]
     root.sharedDoc = {}
 

@@ -47,7 +47,8 @@ app.controller "MainCrtl", ($scope, socket, sharedDoc, localStorageService) ->
 
   console.log "me", $scope.me
 
-  $scope.$watch "me", (n,o) ->
+  $scope.$watch "me.username", (n,o) ->
+    console.log "watch me"
     unless _(n).isEqual o
       #socket.emit "me", $scope.me, =>
       #  console.log "Sending me", $scope.me

@@ -1,12 +1,20 @@
 SERVICE_NAME = "TeamHome"
+INTER_SERVER = "http://localhost:4243/"
 
 require "colors"
 require "./config/globals"
 {port: PORT} = (require("./config/arguments") SERVICE_NAME)
 
+home = 
+  name: "MyHome"
+  avatar: "/img/avatar.jpg"
 
 require("zappajs") PORT, ->
-  @server.on "listening", -> o_ "#{SERVICE_NAME} server listening on".rainbow.inverse, "#{PORT}".green
+
+  @server.on "listening", -> 
+    o_ "#{SERVICE_NAME} server listening on".rainbow.inverse, "#{PORT}".green
+    require("./lib/inter_connect") INTER_SERVER, home
+
   @use "static", logger: "dev"
   @io.set "log level", 0
   @set "view engine": "jade"
@@ -15,6 +23,10 @@ require("zappajs") PORT, ->
     @render "index.jade",
       service_name: SERVICE_NAME
 
-  @include "./lib/shareddoc.coffee"
+  @get "/views/:view.html": ->
+    @render @params.view
+
+
+  @include "./lib/shareddoc"
   @include "./config/builders"
 
