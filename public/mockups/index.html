@@ -1,0 +1,45 @@
+
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <title>Welcome to {{service_name}}    </title>
+    <script src="/zappa/Zappa-simple.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/p2pdatastore.js"></script>
+    <script src="/js/p2pshared.js"></script>
+    <script src="/js/vendors/all.js"></script>
+    <script src="/js/client-all.js"></script>
+    <script src="http://MacBook-Air-de-Jay.local:35729/livereload.js?snipver=1"></script>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+    <!-- script.-->
+    <!--  var app = angular.module("Hackathon", ["ngRoute"]);-->
+    <!-- script(src="/js/controllers/testapp.js")-->
+    <!-- script(src="/js/factories/socket.js")-->
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#/" class="navbar-brand">Team Home</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#/">Home</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="block">
+        <h1>Team Home</h1>
+        <p class="lead">Team Home project.<br/>AngelHack Paris 2013</p><button type="button" class="btn btn-primary btn-lg">Add a new home</button>
+      </div>
+      <h3>What is it?</h3>
+      <p class="lead">
+        <Lorem>ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</Lorem>
+      </p>
+    </div>
+  </body>
+</html>
