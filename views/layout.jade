@@ -19,7 +19,7 @@ html(ng-app=service_name)
         var myHome = !{my_home};
   body(ng-controller="MainCtrl")
 
-  .navbar.navbar-inverse.navbar-fixed-top
+  #header.navbar.navbar-inverse.navbar-fixed-top
     .navbar-header
       button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
         span.icon-bar
@@ -29,18 +29,31 @@ html(ng-app=service_name)
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li
-          a(href='#/homes/') Homes
+          a(href='#/homes/', data-target=".navbar-collapse", data-toggle="collapse")
+            span.glyphicon.glyphicon-tower
+            |  My Homes
         li
-          a(href='#/homes/add') Add a Home
+          a(href='#/homes/add', data-target=".navbar-collapse", data-toggle="collapse") 
+            span.glyphicon.glyphicon-plus-sign
+            |  Add a Home 
+        li.divider
         li
-          a(href='#/users/') My family
+          a(href='#/users/', data-target=".navbar-collapse", data-toggle="collapse")
+            span.glyphicon.glyphicon-user
+            |  My family
         li
-          a(href='#/users/add') Add a family member
+          a(href='#/users/add', data-target=".navbar-collapse", data-toggle="collapse") 
+            span.glyphicon.glyphicon-plus-sign
+            |  Add a family member 
+        li.divider
+        li
+          a(href='#/channel', data-target=".navbar-collapse", data-toggle="collapse")
+            span.glyphicon.glyphicon-send
+            |  Family channel
 
   block content
 
-  footer.container
-    p
-      small © 2013 
-        a(href="https://github.com/Evangenieur/TeamHome") Team Home
-        | - AngelHack Paris 2013
+  script.
+    $('#header').on("click", "a", null, function () {
+         $('#header').removeClass('open')
+    });

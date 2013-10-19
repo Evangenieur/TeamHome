@@ -4,3 +4,8 @@ body{padding-top:50px;}
 .navbar-brand{color:white !important;}
 footer{color:#AAA;}
 input,select{text-align:center;}
+.channel{padding-top:0px;}.channel .panel{margin:5px -12px !important;}
+.channel .panel .avatar{width:40px;height:40px;margin:-10px 10px 0 -10px;}
+.channel .media img{width:100%;}
+.channel .media iframe{width:100%;}
+.channel .message{box-shadow:0 0 10px rgba(0, 0, 0, 0.8);border-top:1px solid white;padding:5px 5px 0 5px;}.channel .message textarea,.channel .message button{margin-bottom:5px;}
