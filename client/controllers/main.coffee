@@ -1,6 +1,6 @@
-app.controller "MainCrtl", ($scope, socket, sharedDoc, localStorageService) ->
-  console.log "MainCrtl", $scope, socket, localStorage
+app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageService) ->
 
+  console.log "MainCtrl", myHome, $scope, socket, localStorage
   # LiveRelaod
   firstCnx = not socket.socket.connected
   console.log "firstCnx", socket.socket.connected
@@ -20,32 +20,29 @@ app.controller "MainCrtl", ($scope, socket, sharedDoc, localStorageService) ->
     switch doc_name
       when "Users"        
         update_users = ->
-          console.log "users", Users, Users.list()
           $scope.users = Users.list()
 
         $scope[doc_name].on "add", update_users
         $scope[doc_name].on "remove", update_users
 
   #### MY IDENTITY ######
-  console.log "me ?", localStorageService.get("me")
   $scope.me = Users.add do ->
       try
         if me = localStorageService.get("me")
           return JSON.parse(me)
       catch e 
         localStorageService.remove("me")
+
       me = 
         id: cuid()
-        username: "Anon"
-        avatar: ""
+        username: null
+        avatar: null
         ua: (new UAParser()).getResult()
 
       localStorageService.add "me", JSON.stringify($scope.me)
 
       me
-
-
-  console.log "me", $scope.me
+  
 
   $scope.$watch "me.username", (n,o) ->
     console.log "watch me"
@@ -54,4 +51,17 @@ app.controller "MainCrtl", ($scope, socket, sharedDoc, localStorageService) ->
       #  console.log "Sending me", $scope.me
       localStorageService.add "me", JSON.stringify($scope.me)
 
+  if not myHome?.name or not $scope.me?.username
+    $location.path "/home"
+  else
+    $location.path "/channel"
 
+  ### View Methods ###
+  $scope.setup = ->
+    if not myHome?.name
+      $location.path "/homes/add"
+    else if not $scope.me?.username
+      $location.path "/users/add"
+    else
+      alert "WTF ?"
+    console.log $scope

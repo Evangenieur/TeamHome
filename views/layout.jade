@@ -2,7 +2,7 @@ html(ng-app=service_name)
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
-    title Welcome to {{service_name}}    
+    title Welcome to #{service_name}
     script(src="/js/p2pdatastore.js")
     script(src="/zappa/Zappa-simple.js")
     script(src="/socket.io/socket.io.js")
@@ -15,7 +15,9 @@ html(ng-app=service_name)
     link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap-theme.min.css")
     link(rel="stylesheet" href="/css/styles.css")
-  body
+    script.
+        var myHome = !{my_home};
+  body(ng-controller="MainCtrl")
 
   .navbar.navbar-inverse.navbar-fixed-top
     .navbar-header
