@@ -13,10 +13,26 @@ html(ng-app=service_name)
     link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap-theme.min.css")
     link(rel="stylesheet" href="/css/styles.css")
-    // script.
-    //  var app = angular.module("Hackathon", ["ngRoute"]);
-    // script(src="/js/controllers/testapp.js")
-    // script(src="/js/factories/socket.js")
   body
 
-    block content
+  .navbar.navbar-inverse.navbar-fixed-top
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='#/') Team Home
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.active
+          a(href='#/') Home
+        li
+          a(href='#about') About
+
+  block content
+
+  footer.container
+    p
+      small © 2013 
+        a(href="https://github.com/Evangenieur/TeamHome") Team Home
+        | - AngelHack Paris 2013

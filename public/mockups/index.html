@@ -4,9 +4,9 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
     <title>Welcome to {{service_name}}    </title>
+    <script src="/js/p2pdatastore.js"></script>
     <script src="/zappa/Zappa-simple.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/p2pdatastore.js"></script>
     <script src="/js/p2pshared.js"></script>
     <script src="/js/vendors/all.js"></script>
     <script src="/js/client-all.js"></script>
@@ -32,14 +32,18 @@
       </div>
     </div>
     <div class="container">
-      <div class="block">
+      <div class="block intro">
         <h1>Team Home</h1>
-        <p class="lead">Team Home project.<br/>AngelHack Paris 2013</p><button type="button" class="btn btn-primary btn-lg">Add a new home</button>
+        <p class="lead">Team Home project.<br/>AngelHack Paris 2013</p>
+        <button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-plus-sign"></span> Add a new home</button>
       </div>
       <h3>What is it?</h3>
       <p class="lead">
         <Lorem>ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</Lorem>
       </p>
     </div>
+    <footer class="container">
+      <p><small>© 2013 <a href="https://github.com/Evangenieur/TeamHome">Team Home</a>- AngelHack Paris 2013</small></p>
+    </footer>
   </body>
 </html>

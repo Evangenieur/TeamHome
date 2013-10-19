@@ -1,10 +1,19 @@
 extends layout
 
 block content
-  h1 #{service_name} Bootstrap
-  .container(ng-controller="MainCrtl")
-    input(ng-model="me.username")
-    textarea(ng-model="data",cols=40,rows=10)
-    #users(ng-repeat="user in users")
-      .user {{user.id}} - {{user.username}} - {{user.ua}}
-    #show {{data}}
+
+  .container
+    .block.intro
+      h1 Team Home
+      p.lead
+        | Team Home project.
+        br
+        | AngelHack Paris 2013
+
+      button.btn.btn-primary.btn-lg(type="button")
+        span.glyphicon.glyphicon-plus-sign
+        |  Add a new home
+
+    h3 What is it?
+    p.lead
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
