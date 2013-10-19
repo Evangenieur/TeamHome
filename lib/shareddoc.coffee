@@ -4,6 +4,7 @@ browserify = require 'browserify-middleware'
   @get "/js/p2pdatastore.js": browserify ["crdt", "duplex",
     "./lib/rooms.js"
     "./lib/users.js"
+    "./lib/timelines.js"
   ]
 
   @server.on "listening", -> 
@@ -32,8 +33,10 @@ browserify = require 'browserify-middleware'
           stores[name]
 
       @add: (data) ->
-        console.log "add", data, data.id
         new @ data.id, data
+
+      @get: (id) ->
+        new @ id
 
       @list: ->
         row.state for id, row of stores[@name].rows
@@ -85,6 +88,8 @@ browserify = require 'browserify-middleware'
     Rooms.set_store sharedDoc.Rooms
     root.Users = local_or_remote_module "users"
     Users.set_store sharedDoc.Users
+    root.Timelines = local_or_remote_module "timelines"
+    Timelines.set_store sharedDoc.Timelines
 
     class SocketIOStreams
       constructor: (@socket) ->
@@ -110,3 +115,6 @@ browserify = require 'browserify-middleware'
         sio_chan = sio_streams.createStreamOnChannel(doc_name)
         ds.pipe(sio_chan).pipe(ds)
 
+  sharedDoc.Timelines.on "add", -> console.log "+T"
+  sharedDoc.Timelines.on "row_update", -> console.log "~T"
+  sharedDoc.Timelines.on "remove", -> console.log "-T"

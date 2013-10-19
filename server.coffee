@@ -12,8 +12,8 @@ try
   home = JSON.parse fs.readFileSync HOME_FILE
 catch e
   home = 
-    name: "MyHome"
-    avatar: "/img/avatar.jpg"
+    name: null
+    avatar: null
 
 require("zappajs") PORT, ->
 

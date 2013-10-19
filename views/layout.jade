@@ -50,6 +50,10 @@ html(ng-app=service_name)
           a(href='#/channel', data-target=".navbar-collapse", data-toggle="collapse")
             span.glyphicon.glyphicon-send
             |  Family channel
+        li
+          a(ng-click='logout()')
+            span.glyphicon.glyphicon-off
+            |  Family channel
 
   block content
 

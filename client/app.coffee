@@ -6,7 +6,6 @@ if location.hostname is "localhost" or location.hostname is "macbook-air-de-jay.
 
 window.app = angular.module("TeamHome", ["ngRoute", "LocalStorageModule"])
   .config ($routeProvider) ->
-
     $routeProvider.when "/home",
       templateUrl: "/views/homepage.html"
       controller: "HomepageCtrl"
