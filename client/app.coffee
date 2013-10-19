@@ -1,4 +1,9 @@
-console.log "App"
+if location.hostname is "localhost" or location.hostname is "MacBook-Air-de-Jay.local"
+  s = document.createElement("script")
+  s.type = "text/javascript"
+  s.src = "http://MacBook-Air-de-Jay.local:35729/livereload.js?snipver=1"
+  $("head").append s
+
 window.app = angular.module("TeamHome", ["ngRoute", "LocalStorageModule"])
   .config ($routeProvider) ->
 
