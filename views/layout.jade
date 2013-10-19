@@ -28,7 +28,7 @@ html(ng-app=service_name)
       a.navbar-brand(href='#/') Team Home
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li
+        li(ng-class="isActive('homes')")
           a(href='#/homes/', data-target=".navbar-collapse", data-toggle="collapse")
             span.glyphicon.glyphicon-tower
             |  Homes
