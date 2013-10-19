@@ -1,4 +1,4 @@
-SERVICE_NAME = "Hackathon"
+SERVICE_NAME = "TeamHome"
 
 require "colors"
 require "./config/globals"
@@ -15,12 +15,6 @@ require("zappajs") PORT, ->
     @render "index.jade",
       service_name: SERVICE_NAME
 
-  @on connection: -> 
-    o_ "connected".green
-    @emit "identification", 
-      id: cuid()
-      userAgent: @req.header("User-Agent")
-      id: @req.ip
   @include "./lib/shareddoc.coffee"
   @include "./config/builders"
 

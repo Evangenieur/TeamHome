@@ -1,7 +1,10 @@
 browserify = require 'browserify-middleware'
 
 @include = ->
-  @get "/js/p2pdatastore.js": browserify ["crdt", "duplex", "cuid"]
+  @get "/js/p2pdatastore.js": browserify ["crdt", "duplex",
+    "./lib/rooms.js"
+    "./lib/users.js"
+  ]
 
   @server.on "listening", -> 
 
@@ -27,6 +30,11 @@ browserify = require 'browserify-middleware'
         stores[name] = doc
         @__defineGetter__ "store", ->
           stores[name]
+        console.log "STORES", stores
+
+      @add: (data) ->
+        console.log "add", data, data.id
+        new @ data.id, data
 
       constructor: ->
         @store_name = @constructor.name
@@ -51,8 +59,15 @@ browserify = require 'browserify-middleware'
       set: (field, value) ->
         @data.set field, value
 
+
     root.crdt = require "crdt"
     duplex = require "duplex" 
+    
+    local_or_remote_module = (component) ->
+      require if module?
+          "./#{component}"
+        else
+          "./lib/#{component}.js"
 
     root.sharedDocs = [
       "Users"
@@ -62,6 +77,11 @@ browserify = require 'browserify-middleware'
 
     for sdoc in sharedDocs
       root.sharedDoc[sdoc] = new crdt.Doc()
+      
+    root.Rooms = local_or_remote_module "rooms"
+    Rooms.set_store sharedDoc.Rooms
+    root.Users = local_or_remote_module "users"
+    Users.set_store sharedDoc.Users
 
     class SocketIOStreams
       constructor: (@socket) ->
