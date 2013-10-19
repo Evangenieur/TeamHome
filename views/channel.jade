@@ -1,4 +1,5 @@
 block content
+<<<<<<< HEAD
   .container.channel
 
     .panel.panel-default
@@ -48,3 +49,14 @@ block content
       button.btn.btn-primary.btn-block
         span.glyphicon.glyphicon-send
         p  Send my message to my family
+=======
+  .container
+    .block
+      | Coucou
+      .chat(ng-repeat="chat_entry in timelines | matchCurrentChannel:current_channel | orderBy:'-date_started'") 
+        img(ng-src="{{get_user(chat_entry.user, 'avatar')}}",width=50, height=50)
+        {{get_user(chat_entry.user, 'username')}} {{chat_entry.datum.text}}
+        br
+      br
+      input(type="text",ng-model="chat.datum.text",enter-submit="send()")
+>>>>>>> 69115a962dc08e2c7ec5e705762f4e5ff146f5a2
