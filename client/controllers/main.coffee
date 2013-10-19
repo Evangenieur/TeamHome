@@ -20,7 +20,8 @@ app.controller "MainCrtl", ($scope, socket, sharedDoc, localStorageService) ->
     switch doc_name
       when "Users"        
         update_users = ->
-          $scope.users = (user.state for id, user of $scope.Users.rows)
+          console.log "users", Users, Users.list()
+          $scope.users = Users.list()
 
         $scope[doc_name].on "add", update_users
         $scope[doc_name].on "remove", update_users
