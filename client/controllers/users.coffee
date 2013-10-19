@@ -14,4 +14,4 @@ app.controller "UserAddCtrl", ($scope, $location, localStorageService) ->
     localStorageService.add "me", JSON.stringify($scope.me)
 
     console.log "submit"
-    $location.path "/"    
+    $location.path "/channel"    
