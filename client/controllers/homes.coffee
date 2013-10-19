@@ -4,7 +4,5 @@ app.controller "HomeListCtrl", ($scope, socket, sharedDoc, localStorageService) 
 app.controller "HomeAddCtrl", ($scope, socket, sharedDoc, localStorageService) ->
   console.log "Home add"
 
-  $('input[type="file"]').ezdz({
-    text: 'Add a picture'
-  })
+  $('input[type="file"]').ezdz text: "Add a picture"
 
