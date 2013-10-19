@@ -32,10 +32,10 @@ html(ng-app=service_name)
           a(href='#/homes/', data-target=".navbar-collapse", data-toggle="collapse")
             span.glyphicon.glyphicon-tower
             |  Homes
-        li
-          a(href='#/homes/add', data-target=".navbar-collapse", data-toggle="collapse") 
-            span.glyphicon.glyphicon-plus-sign
-            |  Add a Home 
+        //- li
+        //-   a(href='#/homes/add', data-target=".navbar-collapse", data-toggle="collapse") 
+        //-     span.glyphicon.glyphicon-plus-sign
+        //-     |  Add a Home 
         li
           a(href='#/users/', data-target=".navbar-collapse", data-toggle="collapse")
             span.glyphicon.glyphicon-user
@@ -49,9 +49,12 @@ html(ng-app=service_name)
             span.glyphicon.glyphicon-send
             |  Channel
         li
+          a(href='#/visio', data-target=".navbar-collapse", data-toggle="collapse")
+            span.glyphicon.glyphicon-send
+            |  Visio
+        li
           a(ng-click='logout()')
             span.glyphicon.glyphicon-off
-            |  Logout
 
   block content
 

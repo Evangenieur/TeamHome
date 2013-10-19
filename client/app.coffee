@@ -29,3 +29,7 @@ window.app = angular.module("TeamHome", ["ngRoute", "LocalStorageModule"])
     $routeProvider.when "/channel",
       templateUrl: "/views/channel.html"
       controller: "ChannelCtrl"
+
+    $routeProvider.when "/visio",
+      templateUrl: "/views/visio.html"
+      controller: "VisioCtrl"

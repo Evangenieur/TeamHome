@@ -1,5 +1,5 @@
 block content
-  .container.channel
+  .container.channels
 
     .panel.panel-default(ng-repeat="chat_entry in timelines | matchCurrentChannel:current_channel | orderBy:'-date_started'") 
       .panel-heading 
@@ -16,4 +16,4 @@ block content
           
       button.btn.btn-primary.btn-block
         span.glyphicon.glyphicon-send
-        |  Send my message to my family
+        |  Send this message to my family
