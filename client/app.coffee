@@ -7,7 +7,7 @@ if location.hostname is "localhost" or location.hostname is "MacBook-Air-de-Jay.
 window.app = angular.module("TeamHome", ["ngRoute", "LocalStorageModule"])
   .config ($routeProvider) ->
 
-    $routeProvider.when "/",
+    $routeProvider.when "/home",
       templateUrl: "/views/homepage.html"
       controller: "HomepageCtrl"
 
@@ -26,3 +26,7 @@ window.app = angular.module("TeamHome", ["ngRoute", "LocalStorageModule"])
     $routeProvider.when "/users/add",
       templateUrl: "/views/users-add.html"
       controller: "UserAddCtrl"
+
+    $routeProvider.when "/channel",
+      templateUrl: "/views/channel.html"
+      controller: "ChannelCtrl"

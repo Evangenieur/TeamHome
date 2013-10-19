@@ -7,9 +7,9 @@ block content
         br
         | AngelHack Paris 2013
 
-      a.btn.btn-primary.btn-lg(href="#/homes/add")
+      a.btn.btn-primary.btn-lg(ng-click="setup()")
         span.glyphicon.glyphicon-plus-sign
-        |  Add a new home
+        |  {{setup_txt}}
 
     h3 What is it ?
     p.lead

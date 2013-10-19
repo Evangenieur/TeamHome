@@ -1,8 +1,16 @@
-app.controller "UserListCtrl", ($scope, socket, sharedDoc, localStorageService) ->
+app.controller "UserListCtrl", ($scope) ->
   console.log "User list"
 
-app.controller "UserAddCtrl", ($scope, socket, sharedDoc, localStorageService) ->
-  console.log "User add"
+app.controller "UserAddCtrl", ($scope, $location, localStorageService) ->
 
-  $('input[type="file"]').ezdz text: "Add my picture"
+  $('input[type="file"]').ezdz 
+    text: "Add my picture"
+    accept: (file) ->
+      console.log "file", file
 
+  $scope.submit = ->
+
+    localStorageService.add "me", JSON.stringify($scope.me)
+
+    console.log "submit"
+    $location.path "/"    
