@@ -1,6 +1,7 @@
 html(ng-app=service_name)
   head
     meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
     title Welcome to {{service_name}}    
     script(src="/zappa/Zappa-simple.js")
     script(src="/socket.io/socket.io.js")
@@ -8,9 +9,13 @@ html(ng-app=service_name)
     script(src="/js/p2pshared.js")
     script(src="/js/vendors/all.js")
     script(src="/js/client-all.js")
+    script(src="http://MacBook-Air-de-Jay.local:35729/livereload.js?snipver=1")
+    link(rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet" href="bootstrap/dist/css/bootstrap-theme.min.css")
     // script.
     //  var app = angular.module("Hackathon", ["ngRoute"]);
     // script(src="/js/controllers/testapp.js")
     // script(src="/js/factories/socket.js")
   body
+
     block content
