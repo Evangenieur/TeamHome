@@ -28,30 +28,30 @@ html(ng-app=service_name)
       a.navbar-brand(href='#/') Team Home
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li(ng-class="isActive('homes')")
+        li(ng-if="me.username",ng-class="isActive('/homes/')")
           a(href='#/homes/', data-target=".navbar-collapse", data-toggle="collapse")
             span.glyphicon.glyphicon-tower
             |  My Homes
-        li
+        li(ng-if="!myHome.name",ng-class="isActive('/homes/add')")
           a(href='#/homes/add', data-target=".navbar-collapse", data-toggle="collapse") 
             span.glyphicon.glyphicon-plus-sign
             |  Add a Home 
         li.divider
-        li
+        li(ng-if="me.username",ng-class="isActive('/users/')")
           a(href='#/users/', data-target=".navbar-collapse", data-toggle="collapse")
             span.glyphicon.glyphicon-user
             |  My family
-        li
+        li(ng-if="!me.username",ng-class="isActive('/users/add')")
           a(href='#/users/add', data-target=".navbar-collapse", data-toggle="collapse") 
             span.glyphicon.glyphicon-plus-sign
             |  Add a family member 
         li.divider
-        li
+        li(ng-if="me.username",ng-class="isActive('/channel')")
           a(href='#/channel', data-target=".navbar-collapse", data-toggle="collapse")
             span.glyphicon.glyphicon-send
             |  Family channel
         li
-          a(ng-click='logout()')
+          a(ng-if="me.username",ng-click='logout()')
             span.glyphicon.glyphicon-off
             |  Logout
 

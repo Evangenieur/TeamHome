@@ -1,12 +1,8 @@
 app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageService) ->
 
   console.log "MainCtrl", myHome, $scope, socket, localStorage
-
-  $scope.isActive = (page) ->
-    console.log "isActive", page, window.location.hash
-    "active"
-
-
+  $scope.myHome = myHome
+  
   # LiveRelaod
   firstCnx = not socket.socket.connected
   console.log "firstCnx", socket.socket.connected
@@ -73,6 +69,12 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
     $location.path "/channel"
 
   ### View Methods ###
+  $scope.isActive = (page) ->
+    if window.location.hash[1..-1] is page
+      "active"
+    else 
+      ""
+
   $scope.logout = ->
     console.log "logout"
     localStorageService.remove("me")
