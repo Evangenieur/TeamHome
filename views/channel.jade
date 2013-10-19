@@ -6,7 +6,7 @@ block content
         span.pull-left
           img.avatar(ng-src="{{get_user(chat_entry.user, 'avatar')}}")
         b {{get_user(chat_entry.user, 'username')}} 
-        small.pull-right 15 minutes ago
+        small.pull-right(timeago="chat_entry.date_started")
       .panel-body
         p {{chat_entry.datum.text}}
 
