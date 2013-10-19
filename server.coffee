@@ -1,5 +1,5 @@
 SERVICE_NAME = "TeamHome"
-INTER_SERVER = "http://localhost:4243/"
+INTER_SERVER = "http://teamho.me/"
 
 require "colors"
 require "./config/globals"
