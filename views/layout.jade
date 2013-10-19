@@ -10,6 +10,7 @@ html(ng-app=service_name)
     script(src="/js/vendors/all.js")
     script(src="/js/client-all.js")
     script(src="/js/ezdz/jquery.ezdz.min.js")
+    script(src="/bootstrap/dist/js/bootstrap.min.js") 
     link(rel="stylesheet" href="/js/ezdz/jquery.ezdz.css")
     link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap-theme.min.css")
@@ -28,7 +29,9 @@ html(ng-app=service_name)
         li.active
           a(href='#/') Home
         li
-          a(href='#about') About
+          a(href='#/homes/add') Add a Home
+        li
+          a(href='#/users/add') Add a User
 
   block content
 
