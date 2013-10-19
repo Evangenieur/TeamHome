@@ -35,7 +35,7 @@ coffee = require "coffee-script"
         .then (data) ->          
           _.object(
             [filename.replace(".coffee", ".js")]
-            [coffee.compile data]
+            [coffee.compile data, filename: filename]
           )
 
   update_file_data = (props) -> (js_entry) ->
