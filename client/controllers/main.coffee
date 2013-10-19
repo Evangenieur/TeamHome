@@ -16,6 +16,7 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
 
   # sharedDocs
   sharedDocs.forEach (doc_name) ->
+    console.log "sharedDoc", doc_name
     $scope[doc_name] = sharedDoc doc_name
     switch doc_name
       when "Users"        
@@ -24,6 +25,15 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
 
         $scope[doc_name].on "add", update_users
         $scope[doc_name].on "remove", update_users
+        #$scope[doc_name].on "row_update", update_users
+      when "Timelines"        
+        update_timelines = ->
+          console.log "update_timelines"
+          $scope.timelines = Timelines.list()
+
+        $scope[doc_name].on "add", update_timelines
+        $scope[doc_name].on "remove", update_timelines
+        #$scope[doc_name].on "row_update", update_timelines
 
   #### MY IDENTITY ######
   $scope.me = Users.add do ->
@@ -57,6 +67,11 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
     $location.path "/channel"
 
   ### View Methods ###
+  $scope.logout = ->
+    console.log "logout"
+    localStorageService.remove("me")
+    window.location.reload()
+
   $scope.setup = ->
     if not myHome?.name
       $location.path "/homes/add"

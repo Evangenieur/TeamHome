@@ -7,6 +7,7 @@ app.controller "UserAddCtrl", ($scope, $location, localStorageService) ->
     text: "Add my picture"
     accept: (file) ->
       console.log "file", file
+      $scope.me.avatar = file.data
 
   $scope.submit = ->
 

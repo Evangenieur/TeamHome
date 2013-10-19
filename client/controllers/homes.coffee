@@ -3,14 +3,13 @@ app.controller "HomeListCtrl", ($scope) ->
 
 app.controller "HomeAddCtrl", ($scope, socket, $location) ->
   console.log "Home add"
-  $scope.home = 
-    name: ""
-    avatar: ""
+  $scope.home = myHome
 
   $('input[type="file"]').ezdz 
     text: "Add a picture"
     accept: (file) ->
       console.log "file", file
+      $scope.home.avatar = file.data
 
   $scope.submit = ->
     console.log "submit"
