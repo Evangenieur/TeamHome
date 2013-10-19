@@ -31,25 +31,23 @@ html(ng-app=service_name)
         li
           a(href='#/homes/', data-target=".navbar-collapse", data-toggle="collapse")
             span.glyphicon.glyphicon-tower
-            |  My Homes
+            |  Homes
         li
           a(href='#/homes/add', data-target=".navbar-collapse", data-toggle="collapse") 
             span.glyphicon.glyphicon-plus-sign
             |  Add a Home 
-        li.divider
         li
           a(href='#/users/', data-target=".navbar-collapse", data-toggle="collapse")
             span.glyphicon.glyphicon-user
-            |  My family
+            |  Family
         li
           a(href='#/users/add', data-target=".navbar-collapse", data-toggle="collapse") 
             span.glyphicon.glyphicon-plus-sign
-            |  Add a family member 
-        li.divider
+            |  Add a member 
         li
           a(href='#/channel', data-target=".navbar-collapse", data-toggle="collapse")
             span.glyphicon.glyphicon-send
-            |  Family channel
+            |  Channel
         li
           a(ng-click='logout()')
             span.glyphicon.glyphicon-off
