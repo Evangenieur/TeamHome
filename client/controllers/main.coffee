@@ -1,6 +1,12 @@
 app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageService) ->
 
   console.log "MainCtrl", myHome, $scope, socket, localStorage
+
+  $scope.isActive = (page) ->
+    console.log "isActive", page, window.location.hash
+    "active"
+
+
   # LiveRelaod
   firstCnx = not socket.socket.connected
   console.log "firstCnx", socket.socket.connected
