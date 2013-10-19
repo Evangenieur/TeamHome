@@ -33,6 +33,7 @@ browserify = require 'browserify-middleware'
         console.log "STORES", stores
 
       @add: (data) ->
+        console.log "add", data, data.id
         new @ data.id, data
 
       constructor: ->

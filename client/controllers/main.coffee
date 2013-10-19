@@ -29,7 +29,8 @@ app.controller "MainCrtl", ($scope, socket, sharedDoc, localStorageService) ->
   console.log "me ?", localStorageService.get("me")
   $scope.me = Users.add do ->
       try
-        return JSON.parse(localStorageService.get("me"))
+        if me = localStorageService.get("me")
+          return JSON.parse(me)
       catch e 
         localStorageService.remove("me")
       me = 
