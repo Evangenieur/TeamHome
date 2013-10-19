@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 #{service_name} Upload
+  .container(ng-controller="AppUploader")
+    form.form-inline
+      .form-group
+        label(for="upload") File:
+        input#upload(type="file", onchange="angular.element(this).scope().fileChanged(this)")
+      button.btn.btn-default(type="submit", ng-click="upload()") Upload
+    .progress.progress-striped.active
+      .progress-bar(style="width: {{progress}}%")
