@@ -9,9 +9,6 @@ app.controller "ChannelCtrl", ($scope) ->
       user: $scope.me.id
       channel: ""
 
-  $scope.get_user = (id, field) ->
-    Users.get(id)[field]
-
   $scope.send = ->
     return unless $scope.chat.datum.text
     console.log "Send"

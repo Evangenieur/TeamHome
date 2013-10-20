@@ -1,7 +1,8 @@
-app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageService) ->
+app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageService, webrtc) ->
 
   console.log "MainCtrl", myHome, $scope, socket, localStorage
   $scope.myHome = myHome
+  #$scope.socket = socket
   
   # LiveRelaod
   firstCnx = not socket.socket.connected
@@ -28,9 +29,8 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
         $scope[doc_name].on "add", update_users
         $scope[doc_name].on "remove", update_users
         #$scope[doc_name].on "row_update", update_users
-      when "Timelines"        
+      when "Timelines"
         update_timelines = ->
-          console.log "update_timelines"
           $scope.timelines = Timelines.list()
 
           $("html, body").scrollTop $(document).height()
@@ -58,6 +58,11 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
 
       me
   
+  socket.on "connect", ->
+    console.log "SOCKETID", socket.socket.sessionid
+    $scope.me.state= 
+      id: socket.socket.sessionid
+      online: true
 
   $scope.$watch "me.username", (n,o) ->
     console.log "watch me"
@@ -71,12 +76,25 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
   else
     $location.path "/channel"
 
+  ### WebRTC In ###
+  socket.on "message", (msg) ->
+    console.log "WEBRTC.IN", msg.type, msg
+    webrtc.in_message msg
+
+  ### Quit Visio ###
+  $scope.$on '$routeChangeStart', (next, current) ->
+    if $scope.me.state.visio and not current.$$route.originalPath.match /visio/
+      $scope.me.visio false
+
   ### View Methods ###
   $scope.isActive = (page) ->
     if window.location.hash[1..-1] is page
       "active"
     else 
-      ""
+      if page is "/visio" and _($scope.users).find((user) -> user.state?.visio)
+        "call"
+      else        
+        ""
 
   $scope.logout = ->
     console.log "logout"
@@ -91,3 +109,9 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
     else
       alert "WTF ?"
     console.log $scope
+
+  ### Sub Views Methods ###
+  $scope.get_user = (id, field) ->
+    Users.get(id)[field]
+
+

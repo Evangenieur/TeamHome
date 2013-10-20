@@ -9,11 +9,9 @@ block content
         small.pull-right 5 members online
       .panel-body
         .row
-          .col-xs-6.col-md-3(ng-repeat="user in home.users")
+          .col-xs-6.col-md-3(ng-repeat="user in home.users | in_visio")
             .visio.thumbnail
-              video
-                source(src="http://www.w3schools.com/html/mov_bbb.mp4",type="video/mp4")
-                source(src="http://www.w3schools.com/html/mov_bbb.ogg",type="video/ogg")
+              camera(stream="user.stream",show="cam.activated",autoplay="true",audio="user.audio")
             .caption
-              h5 User name
-              small Dad
+              h5 {{user.username}}
+              small {{get_user(user, 'family_member_type')}}

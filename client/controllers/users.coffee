@@ -1,5 +1,11 @@
 app.controller "UserListCtrl", ($scope) ->
   console.log "User list"
+  $scope.get_online_class = (online) ->
+    if online then "label-success" else "label-default"
+  
+  $scope.get_online_text = (online) ->
+    if online then "online" else "offline"
+
   $scope.families = [
     {
       name: "My Family"

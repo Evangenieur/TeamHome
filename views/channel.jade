@@ -8,9 +8,9 @@ block content
         
         div.col-xs-7
           b {{get_user(chat_entry.user, 'username')}}
-          small  Daddy
+          small  {{get_user(chat_entry.user, 'family_member_type')}}
           br
-          small Johnson family
+          small {{myHome.name}}
 
         div.col-xs-3
           span.time(timeago="chat_entry.date_started")

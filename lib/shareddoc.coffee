@@ -12,6 +12,28 @@ browserify = require 'browserify-middleware'
     init_crdt_streams_over_socket_io(@socket)
     @emit "identification", @socket.handshake.address.address
 
+  # One2One for WebRTC Nego
+  @on message: ->
+    toUser = Users.get(@data.to)
+    return o_ "Error User #{toUser.username} not online" unless toUser.state.online 
+    otherClient = @io.sockets.sockets[toUser.state.id]
+    unless otherClient
+      Users.get(toUser.id).offline()
+      return
+    delete @data.to
+    for user in (Users.list())
+      if user.state?.id is @id
+        @data.from = user.id
+        console.log "message #{@data.type} from", user.username, toUser.username
+    otherClient.emit "message", @data
+  
+  @on disconnect: ->
+    console.log "X disconnect", @id
+    for user in Users.list()
+      if user.state?.id is @id
+        user.state.online = false
+        Users.get(user.id).offline()
+
   @shared "/js/p2pshared.js": ->
  
     root = if window? then window else global
@@ -112,8 +134,7 @@ browserify = require 'browserify-middleware'
         sio_chan = sio_streams.createStreamOnChannel(doc_name)
         ds.pipe(sio_chan).pipe(ds)
 
-  sharedDoc.Timelines.on "add", (doc) -> 
-    console.log "Timelines add", arguments
+  sharedDoc.Timelines.on "add", -> console.log "+T"
 
   sharedDoc.Timelines.on "row_update", -> console.log "~T"
   sharedDoc.Timelines.on "remove", -> console.log "-T"

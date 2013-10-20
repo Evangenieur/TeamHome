@@ -1,22 +1,26 @@
 app.factory 'webrtc', ($rootScope) ->
   peerConnectionConfig = 
     iceServers: [
-      { url: "stun:stun.l.google.com:19302"}
+      # { url: "stun:stun.l.google.com:19302"}
     ]
 
   parser = new UAParser()
   ua = parser.getResult()
   
   if ua.browser.name.match(/Chrom(e|ium)/)
+    ###
     peerConnectionConfig.iceServers.push 
       url: "turn:test@watsh.tv:3478"
       credential: "test"
+    ###
   else if ua.browser.name.match(/Firefox/)
     if parseFloat(ua.browser.version) >= 24.00
+      ###
       peerConnectionConfig.iceServers.push 
         url: "turn:watsh.tv:3478"
         credential: "test"
         username: "test"
+      ###
     else
       return not_supported: true
 
@@ -29,6 +33,7 @@ app.factory 'webrtc', ($rootScope) ->
     return not_supported: true
 
   webrtc.on "message", (msg) ->
+    console.log ">webrtc.message", msg
     events.out_message? msg
 
   webrtc.on "peerStreamAdded", (peer) ->
@@ -114,7 +119,7 @@ app.factory 'webrtc', ($rootScope) ->
         @add_peer user_id
 
       while user_id = @users_to_call.pop()
-        console.log "Calling", user_id
+        console.log "ready : Calling", user_id
         @call_peer user_id
 
       while msg = @waiting_msgs.shift()
@@ -126,12 +131,15 @@ app.factory 'webrtc', ($rootScope) ->
           id: user_id
 
     call_peer: (user_id) ->
-      console.log "Calling #{user_id}"
+      console.log "call_peer #{user_id}"
       peers = webrtc.getPeers user_id
       console.log "peers", peers
-      _(peers).each (peer) ->
-        console.log ">Calling #{user_id}"
-        peer.start()    
+      if peers.length
+        _(peers).each (peer) ->
+          console.log ">Calling #{user_id}"
+          peer.start()    
+      else
+        @add_peer(user_id).start()
     
     stop: ->
       @started = false
