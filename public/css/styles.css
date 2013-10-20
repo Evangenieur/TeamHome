@@ -4,8 +4,12 @@ body{padding-top:50px;}
 .navbar-brand{color:white !important;}
 footer{color:#AAA;}
 input,select{text-align:center;}
-.channels{padding-top:0px;margin-bottom:70px;}.channels .panel{margin:5px -12px !important;}
-.channels .panel .avatar{width:40px;height:40px;margin:-10px 10px 0 -10px;}
+.channels{padding-top:0px;margin-bottom:70px;}.channels .panel{margin:8px -12px !important;overflow:hidden;}
+.channels .panel .avatar{width:48px;height:48px;margin:-5px 5px -5px -10px;}
+.channels .panel-heading{padding:4px 10px;overflow:hidden;}
+.channels .panel-heading small{color:#999;}
+.channels .time{font-style:italic;color:#999;font-size:12px;}
+.channels .panel-heading div{margin:0;}
 .channels .media img{width:100%;}
 .channels .media iframe{width:100%;min-height:250px;}
 .channels .message{box-shadow:0 0 10px rgba(0, 0, 0, 0.8);border-top:1px solid white;padding:5px 5px 0 5px;}.channels .message textarea,.channels .message button{margin-bottom:5px;}
