@@ -1,7 +1,7 @@
 block content
   .container.channels
 
-    .panel.panel-default(ng-repeat="chat_entry in timelines | matchCurrentChannel:current_channel | orderBy:'date_started'") 
+    .panel.panel-default(ng-repeat="chat_entry in timelines | matchCurrentChannel:current_channel | orderBy:'date_published'") 
       .panel-heading.row
         div.col-xs-2
           img.avatar(ng-src="{{get_user(chat_entry.user, 'avatar')}}")
@@ -13,7 +13,7 @@ block content
           small {{myHome.name}}
 
         div.col-xs-3
-          span.time(timeago="chat_entry.date_started")
+          span.time(timeago="chat_entry.date_published")
 
       .panel-body
         p {{chat_entry.datum.text}}

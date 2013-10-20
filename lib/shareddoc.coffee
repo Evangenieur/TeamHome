@@ -8,7 +8,7 @@ browserify = require 'browserify-middleware'
   ]
 
   @on connection: ->
-    o_ "connected"
+    o_ "connected", @id
     init_crdt_streams_over_socket_io(@socket)
     @emit "identification", @socket.handshake.address.address
 
@@ -31,7 +31,7 @@ browserify = require 'browserify-middleware'
     console.log "X disconnect", @id
     for user in Users.list()
       if user.state?.id is @id
-        user.state.online = false
+        user.state.visio = false
         Users.get(user.id).offline()
 
   @shared "/js/p2pshared.js": ->
@@ -134,7 +134,9 @@ browserify = require 'browserify-middleware'
         sio_chan = sio_streams.createStreamOnChannel(doc_name)
         ds.pipe(sio_chan).pipe(ds)
 
-  sharedDoc.Timelines.on "add", -> console.log "+T"
+    ### RESET CLUSTER ALL DEVICES ###
+    for sdoc in root.sharedDocs
+      for id, row of sharedDoc[sdoc].rows
+        console.log "rm", id
+        sharedDoc[sdoc].rm id
 
-  sharedDoc.Timelines.on "row_update", -> console.log "~T"
-  sharedDoc.Timelines.on "remove", -> console.log "-T"

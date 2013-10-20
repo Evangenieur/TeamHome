@@ -73,6 +73,8 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
 
   if not myHome?.name or not $scope.me?.username
     $location.path "/home"
+  else
+    $location.path "/channel"
 
   ### WebRTC In ###
   socket.on "message", (msg) ->

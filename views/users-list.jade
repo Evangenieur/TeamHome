@@ -1,16 +1,16 @@
 block content
   .container.family
 
-    .panel.panel-default(ng-repeat="family in families")
+    .panel.panel-default
       .panel-heading 
         .pull-left
-          img.avatar(src="{{family.avatar}}")
+          img.avatar(src="{{myHome.avatar}}")
         b {{family.name}}
-        small.pull-right {{family.users.length}} members
+        small.pull-right {{users.length}} members
       .panel-body
 
         .row
-          .col-xs-6.col-md-3.online(ng-repeat="user in family.users")
+          .col-xs-6.col-md-3.online(ng-repeat="user in users")
             .member.thumbnail
               img(ng-src="{{user.avatar}}"))
               .label(ng-class="get_online_class(user.state.online)") {{get_online_text(user.state.online)}}

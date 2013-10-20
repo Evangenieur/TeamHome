@@ -1,5 +1,5 @@
 SERVICE_NAME = "TeamHome"
-INTER_SERVER = "http://teamho.me/"
+#INTER_SERVER = "http://teamho.me/"
 fs = require "fs"
 STORE_PATH = "./store/"
 HOME_FILE = STORE_PATH + "home.json"
@@ -19,7 +19,7 @@ require("zappajs") PORT, ->
 
   @server.on "listening", -> 
     o_ "#{SERVICE_NAME} server listening on".rainbow.inverse, "#{PORT}".green
-    require("./lib/inter_connect") INTER_SERVER, home
+    #require("./lib/inter_connect") INTER_SERVER, home
 
   @use "static", logger: "dev"
   @io.set "log level", 0

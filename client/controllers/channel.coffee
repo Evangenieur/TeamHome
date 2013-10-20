@@ -5,7 +5,7 @@ app.controller "ChannelCtrl", ($scope) ->
     window.chat = $scope.chat = Timelines.add
       id: cuid()
       datum: text: ""
-      date_started: (new Date()).getTime()
+      date_published: (new Date()).getTime()
       user: $scope.me.id
       channel: ""
 
