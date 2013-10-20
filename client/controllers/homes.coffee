@@ -1,7 +1,7 @@
 app.controller "HomeListCtrl", ($scope) ->
   console.log "Home list"
 
-app.controller "HomeAddCtrl", ($scope, socket, $location) ->
+app.controller "HomeAddCtrl", ($scope, socket, $location, ImageResize) ->
   console.log "Home add"
   $scope.home = myHome
 
@@ -9,7 +9,10 @@ app.controller "HomeAddCtrl", ($scope, socket, $location) ->
     text: "Add a picture"
     accept: (file) ->
       console.log "file", file
-      $scope.home.avatar = file.data
+      $scope.$apply -> 
+        $scope.home.avatar = (ImageResize $(".ezdz-accept img")[0], 150, 150, 90).src
+
+
 
   $scope.submit = ->
     console.log "submit"
