@@ -32,7 +32,7 @@ app.controller "ChannelCtrl", ($scope, socket) ->
 
   # UUID
   # http://blog.snowfinch.net/post/3254029029/uuid-v4-js
-  uuid = ->
+  createUuid = ->
     uuid = ""
     for i in [0..32]
       rand = Math.random() * 16 | 0
@@ -74,7 +74,7 @@ app.controller "ChannelCtrl", ($scope, socket) ->
     return unless el.files.length
 
     file = el.files[0]
-    file.id = uuid()
+    file.id = createUuid()
     fileReader = new FileReader()
 
     fileReader.onload = (ev) ->
