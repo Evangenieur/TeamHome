@@ -172,7 +172,6 @@ input, select {
   h5 {
     margin: 0;
   }
-
 }
 
 /* homes */
@@ -204,6 +203,48 @@ input, select {
   small {
     color: #999;
   }
-
-
 }
+
+  .progress {
+    height: 4px;
+    margin: 0;
+    top: -10px;
+    position: relative;
+    border: 0;
+    background: transparent;
+  }
+
+  #upload {
+    overflow: hidden;
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+    border: 2px dotted #428bca;
+    position: absolute;
+    bottom: 9px;
+    right: 7px;
+
+    .inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      heignt: 100%;
+      font-size: 200%;
+      color: #428bca;
+      text-align: center;
+      padding-top: 3px;
+    }
+
+    input {
+      opacity: 0.1;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
