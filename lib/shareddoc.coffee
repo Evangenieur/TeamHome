@@ -7,9 +7,6 @@ browserify = require 'browserify-middleware'
     "./lib/timelines.js"
   ]
 
-  @server.on "listening", -> 
-
-
   @on connection: ->
     o_ "connected"
     init_crdt_streams_over_socket_io(@socket)
