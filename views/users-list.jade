@@ -1,67 +1,19 @@
 block content
   .container.family
 
-    .panel.panel-default
+    .panel.panel-default(ng-repeat="family in families")
       .panel-heading 
         .pull-left
-          img.avatar(src="/img/avatar.jpg")
-        b Smith family
-        small.pull-right 7 members
+          img.avatar(src="{{family.avatar}}")
+        b {{family.name}}
+        small.pull-right {{family.users.length}} members
       .panel-body
 
         .row
-          .col-xs-6.col-md-3.online
+          .col-xs-6.col-md-3.online(ng-repeat="user in family.users")
             .member.thumbnail
-              img(src="/img/avatar.jpg"))
+              img(ng-src="{{user.avatar}}"))
               .label.label-success online
             .caption
-              h5 User name
-              small Dad
-
-          .col-xs-6.col-md-3.online
-            .member.thumbnail
-              img(src="/img/avatar.jpg"))
-              .label.label-success online
-            .caption
-              h5 User name
-              small Dad
-
-          .col-xs-6.col-md-3.online
-            .member.thumbnail
-              img(src="/img/avatar.jpg"))
-              .label.label-success online
-            .caption
-              h5 User name
-              small Dad
-
-          .col-xs-6.col-md-3.offline
-            .member.thumbnail
-              img(src="/img/avatar.jpg"))
-              .label.label-default offline
-            .caption
-              h5 User name
-              small Dad
-
-          .col-xs-6.col-md-3.offline
-            .member.thumbnail
-              img(src="/img/avatar.jpg"))
-              .label.label-default offline
-            .caption
-              h5 User name
-              small Dad
-
-          .col-xs-6.col-md-3.offline
-            .member.thumbnail
-              img(src="/img/avatar.jpg"))
-              .label.label-default offline
-            .caption
-              h5 User name
-              small Dad
-
-          .col-xs-6.col-md-3.offline
-            .member.thumbnail
-              img(src="/img/avatar.jpg"))
-              .label.label-default offline
-            .caption
-              h5 User name
+              h5 {{user.username}}
               small Dad

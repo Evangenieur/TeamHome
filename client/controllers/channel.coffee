@@ -21,6 +21,7 @@ app.controller "ChannelCtrl", ($scope) ->
     $("html, body").animate
       scrollTop: $(document).height()
     , "slow"
+    false
 
   $scope.$watch "chat.datum.text", (n,o) ->
     $scope.chat.set "datum", $scope.chat.datum

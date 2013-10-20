@@ -42,3 +42,4 @@ require("zappajs") PORT, ->
   @include "./lib/shareddoc"
   @include "./lib/upload"
   @include "./config/builders"
+  @include "./lib/messaging"

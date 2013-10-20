@@ -9,7 +9,7 @@ block content
           input.form-control.input-lg(ng-model="me.username",type='text', placeholder="Me!")
         .form-group
           label I'm the
-          select.form-control
+          select.form-control(ng-model="me.family_member_type")
             option(value='Dad') Dad
             option(value='Mom') Mom
             option(value='Son') Son

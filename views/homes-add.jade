@@ -4,7 +4,6 @@ block content
       form(enctype="multipart/form-data")
         .form-group
           input(type="file", name="picture", accept="image/*")
-          img(ng-src="{{resized}}")
         .form-group
           label Home's name
           input.form-control.input-lg(type='text', ng-model="home.name", placeholder="Home's name / Family's name")

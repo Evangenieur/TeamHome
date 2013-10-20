@@ -10,7 +10,8 @@ app.controller "HomeAddCtrl", ($scope, socket, $location, ImageResize) ->
     accept: (file) ->
       console.log "file", file
       $scope.$apply -> 
-        $scope.home.avatar = (ImageResize $(".ezdz-accept img")[0], 150, 150, 90).src
+        $scope.home.avatar = 
+          (ImageResize $(".ezdz-accept img")[0], 200, 200, 90).src
 
 
 
