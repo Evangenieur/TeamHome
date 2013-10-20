@@ -16,7 +16,8 @@ block content
           span.time(timeago="chat_entry.date_published")
 
       .panel-body
-        p {{chat_entry.datum.text}}
+        p 
+          content-item(content="chat_entry.datum")
 
     form.message.navbar.navbar-fixed-bottom.navbar-inverse
 

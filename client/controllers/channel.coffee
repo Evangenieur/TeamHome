@@ -59,8 +59,12 @@ app.controller "ChannelCtrl", ($scope, socket) ->
 
     Timelines.add
       id: cuid()
-      datum: text: "#{ file.name }: /files/#{ file.id }"
-      date_started: (new Date()).getTime()
+      datum: 
+        text: "#{ file.name }: /files/#{ file.id }"
+        url: "files/" + file.id
+        type: file.type.match(/^([^\/]+)\//)[1]
+        content_type: file.type
+      date_published: (new Date()).getTime()
       user: $scope.me.id
       channel: ""
 
