@@ -1,5 +1,5 @@
 block content
-  .container.channel
+  .container.channels
 
     .panel.panel-default(ng-repeat="chat_entry in timelines | matchCurrentChannel:current_channel | orderBy:'date_started'") 
       .panel-heading 
@@ -14,6 +14,6 @@ block content
 
       textarea.form-control(ng-model="chat.datum.text",enter-submit="send()",name="message", placeholder="I have something to say to my family...")
           
-      button.btn.btn-primary.btn-block
-        span.glyphicon.glyphicon-send
-        |  Send my message to my family
+      //- button.btn.btn-primary.btn-block
+      //-   span.glyphicon.glyphicon-send
+      //-   |  Send this message to my family

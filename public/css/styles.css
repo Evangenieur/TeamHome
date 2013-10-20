@@ -4,8 +4,15 @@ body{padding-top:50px;}
 .navbar-brand{color:white !important;}
 footer{color:#AAA;}
 input,select{text-align:center;}
-.channel{padding-top:0px;}.channel .panel{margin:5px -12px !important;}
-.channel .panel .avatar{width:40px;height:40px;margin:-10px 10px 0 -10px;}
-.channel .media img{width:100%;}
-.channel .media iframe{width:100%;}
-.channel .message{box-shadow:0 0 10px rgba(0, 0, 0, 0.8);border-top:1px solid white;padding:5px 5px 0 5px;}.channel .message textarea,.channel .message button{margin-bottom:5px;}
+.channels{padding-top:0px;margin-bottom:70px;}.channels .panel{margin:5px -12px !important;}
+.channels .panel .avatar{width:40px;height:40px;margin:-10px 10px 0 -10px;}
+.channels .media img{width:100%;}
+.channels .media iframe{width:100%;min-height:250px;}
+.channels .message{box-shadow:0 0 10px rgba(0, 0, 0, 0.8);border-top:1px solid white;padding:5px 5px 0 5px;}.channels .message textarea,.channels .message button{margin-bottom:5px;}
+.visios{padding-top:0px;padding-bottom:100px;}.visios .panel{margin:5px -12px !important;}
+.visios .panel .avatar{width:40px;height:40px;margin:-10px 10px 0 -10px;}
+.visios .panel-body{text-align:center;}
+.visios .panel-body small{color:#AAA;}
+.visios video{width:100%;height:auto;}
+.visios h5{margin:0;}
+.visios .col-xs-6{padding:1px;}
