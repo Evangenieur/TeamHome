@@ -33,6 +33,8 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
           console.log "update_timelines"
           $scope.timelines = Timelines.list()
 
+          $("html, body").scrollTop $(document).height()
+
         $scope[doc_name].on "add", update_timelines
         $scope[doc_name].on "remove", update_timelines
         #$scope[doc_name].on "row_update", update_timelines

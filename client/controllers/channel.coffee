@@ -18,6 +18,10 @@ app.controller "ChannelCtrl", ($scope) ->
     $scope.chat.date_published = (new Date()).getTime()
     newChatEntry()
 
+    $("html, body").animate
+      scrollTop: $(document).height()
+    , "slow"
+
   $scope.$watch "chat.datum.text", (n,o) ->
     $scope.chat.set "datum", $scope.chat.datum
 
