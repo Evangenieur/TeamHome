@@ -5,11 +5,11 @@ block content
       .panel-heading 
         span.pull-left
           img.avatar(src="/img/avatar.jpg")
-        b Smith family
-        small.pull-right 5 members online
+        b {{myHome.name}}
+        small.pull-right {{get_users_online().length}} members online
       .panel-body
         .row
-          .col-xs-6.col-md-3(ng-repeat="user in home.users | in_visio")
+          .col-xs-6.col-md-3(ng-repeat="user in users | in_visio")
             .visio.thumbnail
               camera(stream="user.stream",show="cam.activated",autoplay="true",audio="user.audio")
             .caption

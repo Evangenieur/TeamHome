@@ -24,7 +24,10 @@ app.controller "VisioCtrl", ($scope, $timeout, webrtc, socket) ->
     $scope.mic.enabled = true
 
     webrtc.users_to_call = _($scope.users).chain()
-      .filter((user) -> user.state?.online and user.id isnt $scope.me.id)
+      .filter((user) -> 
+        user.state?.online and user.id isnt $scope.me.id and
+          not user.stream and not user.state.calling
+      )
       .map((user) -> user.id)
       .value()
     console.log "Users TO Call", webrtc.users_to_call
@@ -67,18 +70,7 @@ app.controller "VisioCtrl", ($scope, $timeout, webrtc, socket) ->
 
   $scope.toggleCam()
 
-  $scope.homes = [
-    {
-      name: "Toto"
-      avatar: null
-      users: $scope.users
-    }
-    {
-      name: "Toto"
-      avatar: null
-      users: $scope.users
-    }
-  ]
+  $scope.homes = [ $scope.myHome ]
 
 
 

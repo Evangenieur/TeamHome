@@ -73,18 +73,18 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
 
   if not myHome?.name or not $scope.me?.username
     $location.path "/home"
-  else
-    $location.path "/channel"
 
   ### WebRTC In ###
   socket.on "message", (msg) ->
     console.log "WEBRTC.IN", msg.type, msg
+    Users.get(msg.from).calling()
     webrtc.in_message msg
 
-  ### Quit Visio ###
+  ### Quit Visio
   $scope.$on '$routeChangeStart', (next, current) ->
     if $scope.me.state.visio and not current.$$route.originalPath.match /visio/
       $scope.me.visio false
+   ###
 
   ### View Methods ###
   $scope.isActive = (page) ->
@@ -114,4 +114,6 @@ app.controller "MainCtrl", ($scope, $location, socket, sharedDoc, localStorageSe
   $scope.get_user = (id, field) ->
     Users.get(id)[field]
 
+  $scope.get_users_online = ->
+    _(Users.list()).filter (user) -> user.state?.online
 

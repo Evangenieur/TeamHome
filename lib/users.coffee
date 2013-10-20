@@ -19,3 +19,8 @@ module.exports =
       @state.visio = flag
       @set "state", @state
 
+    calling: ->
+      @state.calling = true
+      @set "state", @state
+
+
