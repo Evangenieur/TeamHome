@@ -4,12 +4,15 @@ fs = require "fs"
 @include = ->
 
   tempDir = "./temp/"
-  filesDir = "./files/"
+  filesDir = "./public/files/"
   files = {}
 
   @get "/upload": -> 
     @render "upload.jade",
       service_name: "TeamHome"
+
+  @on "getfile", (id, cb) ->
+    cb files[ id ]
 
   @on "upload:start": (file) ->
     console.log "upload:start", file

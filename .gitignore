@@ -3,5 +3,9 @@ store/home.json
 node_modules/*
 public/mockups/*
 sync.sh
-temp
-files
+!temp/
+temp/*
+!temp/.gitkeep
+!public/files/
+public/files/*
+!public/files/.gitkeep

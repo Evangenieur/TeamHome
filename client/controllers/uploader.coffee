@@ -18,6 +18,9 @@ app.controller "AppUploader", ["$scope", "socket", ($scope, socket) ->
       ).toString 16
     uuid
 
+  socket.emit "getfile", (res) ->
+    console.log "got file", res
+
   socket.on "upload:more", (data) ->
     console.log "got socket upload:more", data
     return unless file and fileReader
@@ -39,7 +42,7 @@ app.controller "AppUploader", ["$scope", "socket", ($scope, socket) ->
     file.id = uuid()
 
   $scope.upload = ->
-    return unless file?
+    return no unless file?
 
     console.log "upload file", file
     fileReader = new FileReader()
@@ -51,4 +54,5 @@ app.controller "AppUploader", ["$scope", "socket", ($scope, socket) ->
         data: ev.target.result
 
     socket.emit "upload:start", file
+    no
 ]
