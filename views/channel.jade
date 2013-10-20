@@ -20,7 +20,15 @@ block content
 
     form.message.navbar.navbar-fixed-bottom.navbar-inverse
 
-      textarea.form-control(ng-model="chat.datum.text",enter-submit="send()",name="message", placeholder="I have something to say to my family...")
+      .progress.progress-striped.active
+        .progress-bar(style="width: {{progress}}%")
+
+      #upload
+        .inner
+          span.glyphicon.glyphicon-cloud-upload
+        input(type="file", onchange="angular.element(this).scope().fileChanged(this)")
+
+      textarea.form-control(ng-model="chat.datum.text",enter-submit="send()",name="message", placeholder="Send something to my family...")
           
       //- button.btn.btn-primary.btn-block
       //-   span.glyphicon.glyphicon-send
